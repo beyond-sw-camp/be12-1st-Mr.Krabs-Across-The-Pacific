@@ -92,3 +92,5 @@
 </details>
 
 ## 3. ERD 작성
+
+![ERD](images/erdcloud.PNG)
