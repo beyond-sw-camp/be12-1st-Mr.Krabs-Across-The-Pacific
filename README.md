@@ -94,3 +94,7 @@
 ## 3. ERD 작성
 
 ![ERD](images/erdcloud.PNG)
+
+## 4. 시스템 아키텍처
+
+![Architecture](images/SystemArchitecture.png)
