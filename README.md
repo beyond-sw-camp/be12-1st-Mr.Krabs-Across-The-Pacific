@@ -93,8 +93,15 @@
 
 ## 3. ERD 작성
 
-![ERD](images/erdcloud.PNG)
+![ERD](https://cdn.discordapp.com/attachments/1315834496116985926/1315919349768388648/ATP_ERD.png?ex=675b2325&is=6759d1a5&hm=795c30340ff5704da00af9d3d5f1cb46db3e0d329cb98677f2256931525a08ba&)
 
 ## 4. 시스템 아키텍처
 
 ![Architecture](images/SystemArchitecture.png)
+
+
+## 5. DB 성능 개선(진행 중)
+
+![INDEX](images/INDEX.png)
+
+![Stored Procedure](images/StoredProcedure.jpg)
