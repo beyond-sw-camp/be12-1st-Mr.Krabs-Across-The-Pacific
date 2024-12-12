@@ -1,6 +1,18 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Across%20the%20Pacific&textBg=false)
 # 📈Across The Pacific (미국 주식 포트폴리오 공유 앱)
 
+## 🗂️ 목차
+1. [💻 기술 스택](#💻-기술-스택)  
+2. [🙆🏼‍♀️ 팀원 소개](#🙆🏼‍♀️-팀원-소개)
+3. [📊 프로젝트 개요](#📊-프로젝트-개요)  
+   1.1. [소개](#1️⃣-소개)  
+   1.2. [배경](#2️⃣-배경)  
+4. [📁 요구사항 명세서](#📁-요구사항-명세서)  
+5. [📝 ERD 작성](#📝-ERD-작성)  
+6. [📰 시스템 아키텍처](#📰-시스템-아키텍처)  
+7. [🔧 DB 성능 개선](#🔧-db-성능-개선)  
+8. [📄 기타 문서](#📄-기타-문서)
+
 ## 💻 기술 스택
 
 ### ☑️ FRONT END
@@ -30,22 +42,6 @@
   </tbody>
 </table>
 
-## 목차
-[📊 프로젝트 개요](#📊-프로젝트-개요)
-
-[1️⃣ 소개](#1️⃣-소개)
-
-[2️⃣ 배경](#2️⃣-배경)
-
-
-[📁 요구사항 명세서](#📁-요구사항-명세서)
-
-[📝 ERD 작성](#📝-ERD-작성)
-
-[📰 시스템 아키텍처](#📰-시스템-아키텍처)
-
-[🔧 DB 성능 개선](#🔧-db-성능-개선)
-
 
 
 ## 📊 프로젝트 개요
@@ -53,6 +49,10 @@
 "모두가 함께 성장하는 투자 플랫폼 - Across The Pacific"
 
 ![이미지](images/across_the_Pacific.PNG)
+
+Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전략 학습을 위한 소셜 기반 플랫폼입니다.  
+> **목표**: 정보의 비대칭성을 해소하고, 개인 투자자들에게 투자 인사이트를 제공하여 함께 성장하는 투자 문화를 구축하는 것.
+
 
  Across The Pacific 은 사용자들이 자신의 미국 주식 투자 포트폴리오를 공유하고, 다양한 투자 전략과 정보를 교류할 수 있는 소셜 기반의 투자 플랫폼입니다. 사용자들은 자신의 투자 성과를 시각화하고, 기간별 수익률을 시뮬레이션할 수 있으며, 다른 투자자들의 포트폴리오를 참고하여 새로운 투자 기회를 탐색할 수 있습니다.
 
@@ -166,3 +166,9 @@
 
 ![Stored Procedure](images/StoredProcedure.jpg)
 
+## 📄 기타 문서
+[👉🏼 프로젝트 기획안](https://docs.google.com/document/d/10S8pPWJzgGtz6S1djeimFvKHkFpN2KdOCY7mrUeAtj4/edit?usp=sharing)
+
+<br>
+
+[👉🏼 요구사항 정의서](https://docs.google.com/spreadsheets/d/1woSNDRkSPBwEEkWzr27yUoJJfmwXYKzcMOCcOs6mO3c/edit?usp=sharing)
