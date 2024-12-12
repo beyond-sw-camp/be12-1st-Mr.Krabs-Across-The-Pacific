@@ -1,3 +1,4 @@
+![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Across%20the%20Pacific&textBg=false)
 # Across The Pacific (미국 주식 포트폴리오 공유 앱)
 
 팀원 : 김경준, 김혜정, 신지현, 이의범, 황경윤
