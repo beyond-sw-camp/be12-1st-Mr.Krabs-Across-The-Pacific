@@ -167,7 +167,7 @@ Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전
 ![Stored Procedure](images/StoredProcedure.jpg)
 
 ## 📄 기타 문서
-[👉🏼 프로젝트 기획안](https://docs.google.com/document/d/10S8pPWJzgGtz6S1djeimFvKHkFpN2KdOCY7mrUeAtj4/edit?usp=sharing)
+[👉🏼 프로젝트 기획안](https://docs.google.com/document/d/10S8pPWJzgGtz6S1djeimFvKHkFpN2KdOCY7mrUeAtj4/edit?pli=1&tab=t.b3v4vsjloy9)
 
 <br>
 
