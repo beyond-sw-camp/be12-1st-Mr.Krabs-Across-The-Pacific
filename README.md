@@ -160,7 +160,181 @@ Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전
 ![Architecture](images/SystemArchitecture.png)
 
 
-## 🔧 DB 성능 개선
+## 🔧 SQL 파일 및 DB 성능 개선
+### DDL
+<details>
+<summary> 유저 </summary>
+
+```sql
+CREATE TABLE `user` (
+	`idx`	INT PRIMARY KEY AUTO_INCREMENT,
+	`name`	VARCHAR(30)	NOT NULL,
+	`email`	VARCHAR(50)	NOT NULL,
+	`password`	VARCHAR(256)	NULL,
+	`created_at`	DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	`updated_at`	DATETIME DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP NOT NULL,
+	`tier_grade`	INT	NOT NULL DEFAULT 1,
+	`profile_image`	TEXT	NULL,
+    `auth_provider` INT NOT NULL,
+    FOREIGN KEY (tier_grade) REFERENCES user_tier(idx)
+);
+```
+
+```sql
+CREATE TABLE `user_tier` (
+	`idx`	INT PRIMARY KEY AUTO_INCREMENT,
+	`grade`	VARCHAR(10)	NOT NULL
+);
+```
+
+```sql
+CREATE TABLE `follow` (
+	`idx`	INT	PRIMARY KEY AUTO_INCREMENT,
+	`follower`	INT	NOT NULL,
+	`followee`	INT	NOT NULL,
+	`created_at`	DATETIME NOT NULL,
+    FOREIGN KEY (follower) REFERENCES user(idx),
+    FOREIGN KEY (followee) REFERENCES user(idx)
+);
+```
+</details>
+
+<details>
+<summary>포트폴리오</summary>
+
+```sql
+CREATE TABLE portfolio (
+	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL NOT NULL,
+	user_id INT NOT NULL,
+    is_public BOOLEAN NOT NULL DEFAULT TRUE,
+	FOREIGN KEY (user_id) REFERENCES user(idx)
+);
+```
+
+```sql
+CREATE TABLE bookmark (
+	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	portfolio_id INT NOT NULL,
+	user_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
+    FOREIGN KEY (user_id) REFERENCES user(idx)
+);
+```
+
+```sql
+CREATE TABLE portfolio_reply (
+    idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    contents VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    parent_reply_id INT NULL,
+    user_id INT NOT NULL,
+    portfolio_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(idx),
+    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
+    FOREIGN KEY (parent_reply_id) REFERENCES portfolio_reply(idx)
+);
+```
+
+```sql
+CREATE TABLE portfolio_reply_likes (
+    idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    reply_id INT NOT NULL,
+    user_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (reply_id) REFERENCES portfolio_reply(idx),
+    FOREIGN KEY (user_id) REFERENCES user(idx)
+    
+);
+```
+```sql
+CREATE TABLE badge (
+	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name  VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+```
+```sql
+CREATE TABLE reward (
+	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	portfolio_id INT NOT NULL,
+    badge_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
+    FOREIGN KEY (badge_id) REFERENCES badge(idx)
+);
+
+```
+</details>
+
+<details>
+<summary>주식</summary>
+
+```sql
+CREATE TABLE stock(
+    idx        INT AUTO_INCREMENT PRIMARY KEY,
+    name    VARCHAR(100) NOT NULL,
+    market    VARCHAR(100) NOT NULL,
+    code    VARCHAR(10) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
+);
+```
+```sql
+CREATE TABLE acquisition(
+    idx INT AUTO_INCREMENT PRIMARY KEY,
+    order_at    DATETIME NOT NULL,
+    portfolio_id    INT NOT NULL,
+    stock_id    INT NOT NULL,
+    quantity    INT NOT NULL,
+    price    INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
+    FOREIGN KEY (stock_id) REFERENCES stock(idx)
+); 
+```
+```sql
+CREATE TABLE stock_reply (
+	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	stock_id INT NOT NULL,
+	user_id INT NOT NULL,
+	comment VARCHAR(200) NOT NULL,
+    parent_reply_id INT NULL,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL NOT NULL,
+	FOREIGN KEY (stock_id) REFERENCES stock(idx),
+	FOREIGN KEY (user_id) REFERENCES user(idx),
+	FOREIGN KEY (parent_reply_id) REFERENCES stock_reply(idx)
+);
+```
+```sql
+CREATE TABLE stock_reply_likes (
+    idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    reply_id INT NOT NULL,
+    user_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (reply_id) REFERENCES stock_reply(idx),
+    FOREIGN KEY (user_id) REFERENCES user(idx)
+);
+```
+```sql
+CREATE TABLE interested_stock(
+    idx            INT AUTO_INCREMENT PRIMARY KEY,
+    user_id    INT NOT NULL,
+    stock_id    INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user(idx),
+    FOREIGN KEY (stock_id) REFERENCES stock(idx)
+);
+```
+</details>
+
+### SQL 성능 개선
 
 ![INDEX](images/INDEX.png)
 
