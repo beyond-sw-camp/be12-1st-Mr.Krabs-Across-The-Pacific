@@ -359,7 +359,7 @@ CREATE TABLE interested_stock(
 
 <details>
 <summary>index로 성능개선</summary>
-우리 서비스를 이용하는 시나리오에서는 포트폴리오에 딸린 주식에 관한 정보를 확인하는 일이 잦을 것으로 판단하였다. 따라서 주식에 대한 정보와 포트폴리오에 관한 정보들을 연결할 경우 두 테이블과 모두 1대다 관계를 가지며 주식 소유의 의미를 가진 acquisition 테이블이 제일 JOIN 연산이 많을 것으로 예상되었다. 해당 테이블에 SELECT 질의 결과 약 11만의 카디널리티가 존재하였다. 따라서 해당 테이블에 단순 인덱스들을 만들었다. 다만 단순 인덱스로만 구성하고 복합 인덱스를 사용하지 않았다. 왜냐하면 포트폴리오를 생성할 때에만 컬럼 간에 서로 관계가 생기며, 단순히 JOIN 연산을 통해 조회할 때에는 acquisition의 외래 키를 통한 stock 테이블과 portfolio 테이블을 연결하는 상황이 절대 다수로 예상되기 때문이다.
+우리 서비스를 이용하는 시나리오에서는 포트폴리오에 딸린 주식에 관한 정보를 확인하는 일이 잦을 것으로 판단하였다. 따라서 주식에 대한 정보와 포트폴리오에 관한 정보들을 연결할 경우 두 테이블과 모두 1대다 관계를 가지며 주식 소유의 의미를 가진 acquisition 테이블이 제일 JOIN 연산이 많을 것으로 예상되었다. 해당 테이블에 SELECT 질의 결과 약 11만의 카디널리티가 존재하였다. 따라서 해당 테이블에 단순 인덱스들을 만들었다. 다만 단순 인덱스로만 구성하고 복합 인덱스를 사용하지 않았다. 왜냐하면 포트폴리오를 생성할 때에만 컬럼 간에 서로 관계가 생기며, 단순히 JOIN 연산을 통해 조회할 때에는 acquisition의 외래 키를 통한 stock 테이블과 portfolio 테이블을 연결하는 상황이 다수로 예상되기 때문이다.
 
 ![acquisition의 인덱스 상황](https://github.com/beyond-sw-camp/be12-1st-Mr.Krabs-Across-The-Pacific/blob/main/images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-12-13%20194258.png?raw=true)
 
@@ -368,6 +368,22 @@ CREATE TABLE interested_stock(
 ![user index 적용](/images/user_index_test.png)
 
 user가 10만명일때를 기준으로 테스트한 결과 상당히 빠른 속도로 개선되었다.
+
+한편 복합 키를 사용하여 다음과 같이 성능 테스트 비교를 하였다. 캐시 미스로 CPU - RAM 간 데이터 전송이 지연된 경우의 영향을 최소화하기 위해 다음 절차대로 진행했다.
+- 먼저 필요한 쿼리를 실행한다.
+- 인덱스 생성 후 이전의 쿼리를 순서대로 실행한다.
+- 인덱스를 삭제한 후 이전의 쿼리를 순서대로 실행한다.
+  - 생성한 인덱스
+
+  ![생성한 인덱스](https://github.com/beyond-sw-camp/be12-1st-Mr.Krabs-Across-The-Pacific/blob/main/images/%EB%B3%B5%ED%95%A9%ED%82%A4_HGY.png?raw=true)
+- 생성 후 테스트 예시: 두 번째 열의 값이 Metric이 되는 Duration 값이다.
+
+  ![생성 후 테스트](https://github.com/beyond-sw-camp/be12-1st-Mr.Krabs-Across-The-Pacific/blob/main/images/%EB%B3%B5%ED%95%A9%20%ED%82%A4%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EC%83%9D%EC%84%B1%20%ED%9B%84_HGY.png?raw=true)
+- 삭제 후 테스트 예시: 두 번째 열의 값이 Metric이 되는 Duration 값이다.
+
+  ![삭제 후 테스트](https://github.com/beyond-sw-camp/be12-1st-Mr.Krabs-Across-The-Pacific/blob/main/images/%EB%B3%B5%ED%95%A9%20%ED%82%A4%20%EC%9D%B8%EB%8D%B1%EC%8A%A4%20%EC%82%AD%EC%A0%9C%20%ED%9B%84_HGY.png?raw=true)
+
+지연 시간이 줄어든 값도 있지만 상승한 값도 있어 복합 키를 가진 인덱스가 무조건 유용하다고 보기 힘든 점을 확인하였다.
 </details>
 
 <details>
