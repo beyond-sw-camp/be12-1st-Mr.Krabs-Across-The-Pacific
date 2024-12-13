@@ -1,0 +1,51 @@
+.section-second {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:100%;
+}
+.item-wrapper {
+    display:block;
+    flex: 1 0 41.66667%;
+    text-align: center;
+    width: 50%;
+    height: 24rem;
+    border-radius:0.4em;
+    margin:1em;
+}
+
+.chart {
+    position:relative;
+    width:90%;
+    left:5%;
+    margin:1em;
+    text-align:center;
+}
+
+.chart-wrapper {
+    width:90%;
+    display:flex;
+    flex-direction: row;
+    height:21rem;
+    margin:1em;
+}
+
+.mainpage  {
+    display:flex;
+    width:100%;
+    flex-direction:column;
+    flex-wrap:wrap;
+}
+
+.info-wrapper {
+    display:flex;
+    width:100%;
+    flex-direction: column;
+    flex-wrap:wrap;
+    margin:0.4rem 0;
+}
+
+.shrink-title {
+    width:64rem;
+    margin: 2rem; 
+}

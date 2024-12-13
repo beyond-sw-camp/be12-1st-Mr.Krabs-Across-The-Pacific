@@ -1,0 +1,52 @@
+
+.pie-chart
+{
+    display:block;
+    flex: 1 0 25%;
+    text-align: center;
+    height: 20.5rem;
+    border-radius:0.4em;
+    margin:1em;
+}
+
+@media screen and (max-width:1000px) {
+    .section-second {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .pie-chart
+    {
+        position: relative;
+        margin: 0 1rem;
+        width: 24rem;
+        top: 0.2rem;
+    }
+    .pie-chart-wrapper {
+      position:relative;
+      margin: 2rem;
+  }
+}
+
+.chart-area {
+    position: relative;
+    height: 10rem;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .chart-area {
+      height: 20rem;
+    }
+  }
+  
+  .chart-bar {
+    position: relative;
+    height: 10rem;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .chart-bar {
+      height: 20rem;
+    }
+  }
