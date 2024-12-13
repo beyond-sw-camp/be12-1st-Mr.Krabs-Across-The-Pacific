@@ -160,7 +160,7 @@ Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전
 ![Architecture](images/SystemArchitecture.png)
 
 
-## 🔧 SQL 파일 및 DB 성능 개선
+## 🔧 SQL 개발 및 DB 성능 개선
 ### DDL
 <details>
 <summary> 유저 </summary>
