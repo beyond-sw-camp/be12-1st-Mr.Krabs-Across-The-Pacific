@@ -353,11 +353,95 @@ CREATE TABLE interested_stock(
 );
 ```
 </details>
+
 ### DB 성능 개선안
+
+
+<details>
+<summary>index로 성능개선</summary>
 우리 서비스를 이용하는 시나리오에서는 포트폴리오에 딸린 주식에 관한 정보를 확인하는 일이 잦을 것으로 판단하였다. 따라서 주식에 대한 정보와 포트폴리오에 관한 정보들을 연결할 경우 두 테이블과 모두 1대다 관계를 가지며 주식 소유의 의미를 가진 acquisition 테이블이 제일 JOIN 연산이 많을 것으로 예상되었다. 해당 테이블에 SELECT 질의 결과 약 11만의 카디널리티가 존재하였다. 따라서 해당 테이블에 단순 인덱스들을 만들었다. 다만 단순 인덱스로만 구성하고 복합 인덱스를 사용하지 않았다. 왜냐하면 포트폴리오를 생성할 때에만 컬럼 간에 서로 관계가 생기며, 단순히 JOIN 연산을 통해 조회할 때에는 acquisition의 외래 키를 통한 stock 테이블과 portfolio 테이블을 연결하는 상황이 절대 다수로 예상되기 때문이다.
 
 ![acquisition의 인덱스 상황](https://github.com/beyond-sw-camp/be12-1st-Mr.Krabs-Across-The-Pacific/blob/main/images/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-12-13%20194258.png?raw=true)
 
+또한 user table의 경우에는 로그인 시 email로 특정 유저를 찾아내야 한다. 모든 튜플을 조회하지 않도록 INDEX를 이용해서 성능 개선을 노릴 수 있다.
+
+![user index 적용](/images/user_index_test.png)
+
+user가 10만명일때를 기준으로 테스트한 결과 상당히 빠른 속도로 개선되었다.
+</details>
+
+<details>
+<summary>stored procedure로 성능개선</summary>
+주요 기능별로 자주 사용하는 쿼리들을 미리 프로시저로 만들어 놓음으로써 성능 개선을 노린다.
+
+예를 들어 특정 유저의 포트폴리오 목록을 처리하는 쿼리의 경우 다음과 같다.
+```
+SELECT	portfolio.idx, portfolio.name, portfolio.created_at,portfolio.updated_at, 			count(badge.idx) 
+
+	FROM portfolio 
+
+	LEFT JOIN reward ON portfolio.idx = reward.portfolio_id 
+
+	LEFT JOIN badge ON reward.badge_id = badge.idx 
+
+	WHERE portfolio.user_id = 3 
+
+        	GROUP BY portfolio.idx 
+
+        	LIMIT 0, 30; 
+```
+
+이제 서버에 5명이 동시에 다른 유저의 쿼리를 조회할 경우 다음과 같은 시간이 걸린다.
+
+![stored procedure 적용 전](/images/before_SP.png)
+
+이후 다음과 같은 프로시저를 적용한 후 동일하게 5번 시험해보았다.
+```sql
+DELIMITER $$ 
+
+CREATE PROCEDURE SP_SELECT_PORTFOLIO_WITH_USER_ID(userId INT, idx INT) 
+
+BEGIN 
+
+SELECT portfolio.idx, portfolio.name, portfolio.created_at, 
+
+portfolio.updated_at, count( badge.idx) 
+
+	FROM portfolio 
+
+	LEFT JOIN reward ON portfolio.idx = reward.portfolio_id 
+
+	LEFT JOIN badge ON reward.badge_id = badge.idx 
+
+	WHERE portfolio.user_id = userId 
+
+          ORDER BY portfolio.created_at DESC 
+
+          LIMIT idx, 30; 
+
+END $$ 
+DELIMITER ; 
+```
+시험 결과
+![stored procedure 적용 전](/images/after_SP.png)
+5회 총합 비교 
+
+쿼리 실행 : 0.00654149(초) 
+
+SP 실행 : 0.00393446(초)
+
+portfolio개수 10000개 기준으로 위와 같이 개선되었다.
+
+그래서 모든 주요 쿼리에 STORED PROCEDURE를 적용하였다.
+
+[👉🏼 주요 기능별 STORED PROCEDURE 목록](https://kookmin-my.sharepoint.com/:x:/g/personal/k6jun_kookmin_kr/EYgam2yumRRGrn-b40bB70cB4hJEtG9caX5lgbQBBFY9pQ?e=yEZKsX)
+
+[👉🏼 생성 쿼리문](/create_stored_procedure.sql)
+</details>
+
+
+
+### 성능 
 ## 📄 기타 문서
 [👉🏼 프로젝트 기획안](https://docs.google.com/document/d/10S8pPWJzgGtz6S1djeimFvKHkFpN2KdOCY7mrUeAtj4/edit?pli=1&tab=t.b3v4vsjloy9)
 
