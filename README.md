@@ -1,25 +1,27 @@
 ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=gradient&text=Across%20the%20Pacific&textBg=false)
 # 📈Across The Pacific (미국 주식 포트폴리오 공유 앱)
 
+
 ## 🗂️ 목차
-1. [💻 기술 스택](#-기술-스택)
-2. [👩‍💻 팀원 소개](#-팀원-소개)
-3. [📊 프로젝트 개요](#-프로젝트-개요)  
+1. [💻 기술 스택](#기술-스택)  
+2. [🙆🏼‍♀️ 팀원 소개](#팀원-소개)
+3. [📊 프로젝트 개요](#프로젝트-개요)  
    1.1. [소개](#1️⃣-소개)  
-   1.2. [배경](#2️⃣-배경)  
-4. [📁 요구사항 명세서](#-요구사항-명세서)  
-5. [📝 ERD 작성](#-ERD-작성)  
-6. [📰 시스템 아키텍처](#-시스템-아키텍처)  
-7. [🔧 DB 성능 개선](#-db-성능-개선)  
-8. [📄 기타 문서](#-기타-문서)
+   1.2. [배경](#2️⃣-배경) 
+4. [📁 요구사항 명세서](#요구사항-명세서)  
+5. [📝 ERD 작성](#ERD-작성)  
+6. [📰 시스템 아키텍처](#시스템-아키텍처)  
+7. [🔧 DB 성능 개선](#db-성능-개선)  
+8. [📄 기타 문서](#기타-문서)
 
 ## 💻 기술 스택
 
 ### ☑️ FRONT END
 <img src="https://img.shields.io/badge/html5-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white" />
-	<img src="https://img.shields.io/badge/css3-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white" />
+<img src="https://img.shields.io/badge/css3-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white" />
 <img src="https://img.shields.io/badge/vue.js-%234FC08D.svg?&style=for-the-badge&logo=vue.js&logoColor=white" />
 <img src="https://img.shields.io/badge/nginx-%23269539.svg?&style=for-the-badge&logo=nginx&logoColor=white" />
+
 <br>
 
 ### ☑️ DB
@@ -28,9 +30,10 @@
 <img src="https://img.shields.io/badge/grafana-%23F46800.svg?&style=for-the-badge&logo=grafana&logoColor=white" />
 <img src="https://img.shields.io/badge/prometheus-%23E6522C.svg?&style=for-the-badge&logo=prometheus&logoColor=white" />
 <img src="https://img.shields.io/badge/linux-%23FCC624.svg?&style=for-the-badge&logo=linux&logoColor=black" />
+
 <br>
 
-## 👩‍💻 팀원 소개
+##  🙆🏼‍♀️팀원 소개🙆🏼‍♀️
 <table>
   <tbody>
     <tr>
@@ -53,14 +56,20 @@
 Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전략 학습을 위한 소셜 기반 플랫폼입니다.  
 > **목표**: 정보의 비대칭성을 해소하고, 개인 투자자들에게 투자 인사이트를 제공하여 함께 성장하는 투자 문화를 구축하는 것.
 
-
+<details>
+  <summary>Across The Pacific 상세 소개</summary>
  Across The Pacific 은 사용자들이 자신의 미국 주식 투자 포트폴리오를 공유하고, 다양한 투자 전략과 정보를 교류할 수 있는 소셜 기반의 투자 플랫폼입니다. 사용자들은 자신의 투자 성과를 시각화하고, 기간별 수익률을 시뮬레이션할 수 있으며, 다른 투자자들의 포트폴리오를 참고하여 새로운 투자 기회를 탐색할 수 있습니다.
 
 투자에 있어 '정보의 불균형'이 주요 문제로 지적되는 가운데, (앱 이름)은 사용자들이 자신의 투자 인사이트를 확장하고, 함께 성장할 수 있는 투자 커뮤니티를 제공합니다. 단순한 수익률 추적을 넘어, 사용자 간의 공유, 학습, 성장이라는 새로운 투자 문화를 형성하는 것이 이 서비스의 목표입니다.
 
+</details>
+
 
 ### 2️⃣ 배경
 #### 1. 제안 배경
+
+<details> 
+  <summary> 제안 배경 상세 소개</summary>
 ![기대수명 이미지](images/기대수명.PNG)
 출처 : https://www.index.go.kr/unify/idx-info.do?idxCd=8016
 
@@ -79,19 +88,24 @@ Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전
 
 3. 단순 기록을 넘어선 ‘투자 인사이트 제공’의 필요성
 단순 기록을 넘어선 ‘투자 인사이트 제공’의 필요성 기존의 투자 앱들은 주로 투자 기록 관리나 수익률 확인에 국한되어 있습니다. 하지만, 사용자들은 단순한 수익률 조회가 아니라, 어떻게 투자 전략을 개선할 수 있는지에 대한 인사이트를 원하고 있습니다. (앱 이름)은 투자 전략을 구체화할 수 있는 기능으로 수익률 시뮬레이션, 포트폴리오 분석, 투자 전략 개선 제안 등의 기능을 제공합니다.
+</details>
 
 #### 2. Across The Pacific 서비스의 필요성
-
+<details>
+<summary>서비스 필요성 세부 사항</summary>
 1. 타인의 주식을 참고해 투자를 시작하고싶으나 시작 정보를 어디서 얻어야할지 모르는 사람들이 많다.
 2. 자신의 투자가 안정적인지, 현재 투자 상황의 위험도가 어느정도인지 정확히 인지하지 못하는 사람들이 있다.
 3. 타인이 올린 투자 상황 및 시각 데이터가 얼마나 믿을만한지 신뢰성을 따지기 어렵다.
+</details>
 
 #### 3. Across The Pacific 서비스를 통한 해결 방안
+<details>
+  <summary>서비스를 통한 해결 방안 세부 사항</summary>
 1. 자신의 포트폴리오 작성 및 분석을 통해 자신의 투자 판단을 객관적인 시계열 데이터에 기반해 검증할 수 있다.
 2. 분산투자를 장려할 수 있도록 시뮬레이션을 통해 명확하게 시각화된 정보를 제공한다.
 3. 서로간의 투자 정보를 공유함으로써 정보 비대칭을 해소하는 데에 도움을 줄 수 있다.
 4. 자신의 포트폴리오 공개를 장려하기 위해 분기 단위로 북마크 기능에 기반하여 인기 포트폴리오 순위를 선정해 많은 북마크 수를 가진 사용자들에게 분기별 인증 마크를 부여한다.
-
+</details>
 
 ### <summary><b>3️⃣ 시나리오</b></summary>
 <details>
@@ -137,6 +151,8 @@ Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전
 </div>
 </details>
 
+</details>
+
 
 
 
@@ -146,6 +162,7 @@ Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전
 ## 📁 요구사항 명세서
 
 <details>
+<summary> 요구사항 정의서</summary>
 
 ![요구사항 정의서](images/요구사항%20정의서.png)
 
@@ -160,185 +177,28 @@ Across The Pacific은 미국 주식 투자 포트폴리오 공유 및 투자 전
 ![Architecture](images/SystemArchitecture.png)
 
 
-## 🔧 SQL 개발 및 DB 성능 개선
-### DDL
-<details>
-<summary> 유저 </summary>
+## 🔧 DB 성능 개선
 
-```sql
-CREATE TABLE `user` (
-	`idx`	INT PRIMARY KEY AUTO_INCREMENT,
-	`name`	VARCHAR(30)	NOT NULL,
-	`email`	VARCHAR(50)	NOT NULL,
-	`password`	VARCHAR(256)	NULL,
-	`created_at`	DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	`updated_at`	DATETIME DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-	`tier_grade`	INT	NOT NULL DEFAULT 1,
-	`profile_image`	TEXT	NULL,
-    `auth_provider` INT NOT NULL,
-    FOREIGN KEY (tier_grade) REFERENCES user_tier(idx)
-);
-```
-
-```sql
-CREATE TABLE `user_tier` (
-	`idx`	INT PRIMARY KEY AUTO_INCREMENT,
-	`grade`	VARCHAR(10)	NOT NULL
-);
-```
-
-```sql
-CREATE TABLE `follow` (
-	`idx`	INT	PRIMARY KEY AUTO_INCREMENT,
-	`follower`	INT	NOT NULL,
-	`followee`	INT	NOT NULL,
-	`created_at`	DATETIME NOT NULL,
-    FOREIGN KEY (follower) REFERENCES user(idx),
-    FOREIGN KEY (followee) REFERENCES user(idx)
-);
-```
-</details>
-
-<details>
-<summary>포트폴리오</summary>
-
-```sql
-CREATE TABLE portfolio (
-	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	name VARCHAR(255) NOT NULL,
-	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL NOT NULL,
-	user_id INT NOT NULL,
-    is_public BOOLEAN NOT NULL DEFAULT TRUE,
-	FOREIGN KEY (user_id) REFERENCES user(idx)
-);
-```
-
-```sql
-CREATE TABLE bookmark (
-	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	portfolio_id INT NOT NULL,
-	user_id INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
-    FOREIGN KEY (user_id) REFERENCES user(idx)
-);
-```
-
-```sql
-CREATE TABLE portfolio_reply (
-    idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    contents VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    parent_reply_id INT NULL,
-    user_id INT NOT NULL,
-    portfolio_id INT NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(idx),
-    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
-    FOREIGN KEY (parent_reply_id) REFERENCES portfolio_reply(idx)
-);
-```
-
-```sql
-CREATE TABLE portfolio_reply_likes (
-    idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    reply_id INT NOT NULL,
-    user_id INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (reply_id) REFERENCES portfolio_reply(idx),
-    FOREIGN KEY (user_id) REFERENCES user(idx)
-    
-);
-```
-```sql
-CREATE TABLE badge (
-	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name  VARCHAR(255) NOT NULL,
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
-);
-```
-```sql
-CREATE TABLE reward (
-	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	portfolio_id INT NOT NULL,
-    badge_id INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
-    FOREIGN KEY (badge_id) REFERENCES badge(idx)
-);
-
-```
-</details>
-
-<details>
-<summary>주식</summary>
-
-```sql
-CREATE TABLE stock(
-    idx        INT AUTO_INCREMENT PRIMARY KEY,
-    name    VARCHAR(100) NOT NULL,
-    market    VARCHAR(100) NOT NULL,
-    code    VARCHAR(10) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL
-);
-```
-```sql
-CREATE TABLE acquisition(
-    idx INT AUTO_INCREMENT PRIMARY KEY,
-    order_at    DATETIME NOT NULL,
-    portfolio_id    INT NOT NULL,
-    stock_id    INT NOT NULL,
-    quantity    INT NOT NULL,
-    price    INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL,
-    FOREIGN KEY (portfolio_id) REFERENCES portfolio(idx),
-    FOREIGN KEY (stock_id) REFERENCES stock(idx)
-); 
-```
-```sql
-CREATE TABLE stock_reply (
-	idx INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	stock_id INT NOT NULL,
-	user_id INT NOT NULL,
-	comment VARCHAR(200) NOT NULL,
-    parent_reply_id INT NULL,
-	created_at DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-	updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL NOT NULL,
-	FOREIGN KEY (stock_id) REFERENCES stock(idx),
-	FOREIGN KEY (user_id) REFERENCES user(idx),
-	FOREIGN KEY (parent_reply_id) REFERENCES stock_reply(idx)
-);
-```
-```sql
-CREATE TABLE stock_reply_likes (
-    idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    reply_id INT NOT NULL,
-    user_id INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (reply_id) REFERENCES stock_reply(idx),
-    FOREIGN KEY (user_id) REFERENCES user(idx)
-);
-```
-```sql
-CREATE TABLE interested_stock(
-    idx            INT AUTO_INCREMENT PRIMARY KEY,
-    user_id    INT NOT NULL,
-    stock_id    INT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES user(idx),
-    FOREIGN KEY (stock_id) REFERENCES stock(idx)
-);
-```
-</details>
-
-### SQL 성능 개선
+<details> 
+<summary> 인덱싱 이미지</summary>
 
 ![INDEX](images/INDEX.png)
 
+</details>
+
+<br>
+
+<details> 
+<summary>프로시져 이미지</summary>
+
 ![Stored Procedure](images/StoredProcedure.jpg)
+
+</details>
+
+<br>
+
+👉🏼  [저장된 프로시져 파일]()
+
 
 ## 📄 기타 문서
 [👉🏼 프로젝트 기획안](https://docs.google.com/document/d/10S8pPWJzgGtz6S1djeimFvKHkFpN2KdOCY7mrUeAtj4/edit?pli=1&tab=t.b3v4vsjloy9)
