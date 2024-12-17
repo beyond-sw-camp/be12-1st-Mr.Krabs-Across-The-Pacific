@@ -452,7 +452,7 @@ portfolio개수 10000개 기준으로 위와 같이 개선되었다.
 
 이를 반영해 모든 주요 쿼리에 STORED PROCEDURE를 적용하였다.
 
-[👉🏼 주요 기능별 STORED PROCEDURE 목록](https://kookmin-my.sharepoint.com/:x:/g/personal/k6jun_kookmin_kr/EYgam2yumRRGrn-b40bB70cB4hJEtG9caX5lgbQBBFY9pQ?e=yEZKsX)
+[👉🏼 주요 기능별 STORED PROCEDURE 목록](./images/SP.pdf)
 
 [👉🏼 생성 쿼리문](/create_stored_procedure.sql)
 </details>
@@ -460,7 +460,7 @@ portfolio개수 10000개 기준으로 위와 같이 개선되었다.
 
 ### 성능 
 ## 📄 기타 문서
-[👉🏼 프로젝트 기획안](./images/SP.pdf)
+[👉🏼 프로젝트 기획안](https://docs.google.com/document/d/10S8pPWJzgGtz6S1djeimFvKHkFpN2KdOCY7mrUeAtj4/edit?pli=1&tab=t.b3v4vsjloy9)
 
 <br>
 
