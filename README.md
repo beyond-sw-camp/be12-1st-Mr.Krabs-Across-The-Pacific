@@ -409,19 +409,14 @@ user가 10만명일때를 기준으로 테스트한 결과 상당히 빠른 속�
 주요 기능별로 자주 사용하는 쿼리들을 미리 프로시저로 만들어 놓음으로써 성능 개선을 노린다.
 
 예를 들어 특정 유저의 포트폴리오 목록을 처리하는 쿼리의 경우 다음과 같다.
-``sql
-SELECT	portfolio.idx, portfolio.name, portfolio.created_at,portfolio.updated_at, 			count(badge.idx) 
 
+```sql
+SELECT	portfolio.idx, portfolio.name, portfolio.created_at,portfolio.updated_at, count(badge.idx) 
 	FROM portfolio 
-
 	LEFT JOIN reward ON portfolio.idx = reward.portfolio_id 
-
 	LEFT JOIN badge ON reward.badge_id = badge.idx 
-
 	WHERE portfolio.user_id = 3 
-
         	GROUP BY portfolio.idx 
-
         	LIMIT 0, 30; 
 ```
 
@@ -430,43 +425,32 @@ SELECT	portfolio.idx, portfolio.name, portfolio.created_at,portfolio.updated_at,
 ![stored procedure 적용 전](/images/before_SP.png)
 
 이후 다음과 같은 프로시저를 적용한 후 동일하게 5번 시험해보았다.
+
 ```sql
 DELIMITER $$ 
-
 CREATE PROCEDURE SP_SELECT_PORTFOLIO_WITH_USER_ID(userId INT, idx INT) 
-
 BEGIN 
-
-SELECT portfolio.idx, portfolio.name, portfolio.created_at, 
-
-portfolio.updated_at, count( badge.idx) 
-
+SELECT portfolio.idx, portfolio.name, portfolio.created_at, portfolio.updated_at, count( badge.idx) 
 	FROM portfolio 
-
 	LEFT JOIN reward ON portfolio.idx = reward.portfolio_id 
-
 	LEFT JOIN badge ON reward.badge_id = badge.idx 
-
 	WHERE portfolio.user_id = userId 
-
           ORDER BY portfolio.created_at DESC 
-
           LIMIT idx, 30; 
-
 END $$ 
 DELIMITER ; 
 ```
+
 시험 결과
 ![stored procedure 적용 전](/images/after_SP.png)
 5회 총합 비교 
 
 쿼리 실행 : 0.00654149(초) 
-
 SP 실행 : 0.00393446(초)
 
 portfolio개수 10000개 기준으로 위와 같이 개선되었다.
 
-그래서 모든 주요 쿼리에 STORED PROCEDURE를 적용하였다.
+이를 반영해 모든 주요 쿼리에 STORED PROCEDURE를 적용하였다.
 
 [👉🏼 주요 기능별 STORED PROCEDURE 목록](https://kookmin-my.sharepoint.com/:x:/g/personal/k6jun_kookmin_kr/EYgam2yumRRGrn-b40bB70cB4hJEtG9caX5lgbQBBFY9pQ?e=yEZKsX)
 
@@ -474,10 +458,9 @@ portfolio개수 10000개 기준으로 위와 같이 개선되었다.
 </details>
 
 
-
 ### 성능 
 ## 📄 기타 문서
-[👉🏼 프로젝트 기획안](https://docs.google.com/document/d/10S8pPWJzgGtz6S1djeimFvKHkFpN2KdOCY7mrUeAtj4/edit?pli=1&tab=t.b3v4vsjloy9)
+[👉🏼 프로젝트 기획안](./images/SP.pdf)
 
 <br>
 
